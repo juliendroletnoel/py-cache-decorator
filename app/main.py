@@ -1,6 +1,12 @@
 from typing import Callable
 
-
 def cache(func: Callable) -> Callable:
-    # Write your code here
-    pass
+    memory_dict = {}
+    def wrapper(*args, **kwargs):
+        if args in memory_dict:
+            return memory_dict[args]
+        else:
+            result = func(args)
+            memory_dict[args] = result
+            return result
+    return wrapper 
