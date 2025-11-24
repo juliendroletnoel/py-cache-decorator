@@ -1,8 +1,9 @@
 from typing import Callable
 
+
 def cache(func: Callable) -> Callable:
     memory_dict = {}
-    
+
     def wrapper(*args) -> int:
         if args in memory_dict:
             print("Getting from cache")
